@@ -6,23 +6,23 @@ const nextConfig = {
     localeDetection: false,
   },
   trailingSlash: true,
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/us/:path+/',
-          locale: false,
-          destination: 'https://about.google/:path+/',
-          missing: [
-            {
-              type: 'header',
-              key: 'x-rewrite-exclude'
-            }
-          ]
-        },
-      ]
-    }
-  },
+  // async rewrites() {
+  //   return {
+  //     beforeFiles: [
+  //       {
+  //         source: '/us/:path+/',
+  //         locale: false,
+  //         destination: 'https://about.google/:path+/',
+  //         missing: [
+  //           {
+  //             type: 'header',
+  //             key: 'x-rewrite-exclude'
+  //           }
+  //         ]
+  //       },
+  //     ]
+  //   }
+  // },
 }
 
 module.exports = nextConfig
