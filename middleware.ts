@@ -7,6 +7,8 @@ export async function middleware(request: NextRequest) {
   const fullPathname = `/${locale}${pathname}`;
   let response;
 
+  console.log('process.env.PRIVATE_VAR', process.env.PRIVATE_VAR)
+
   if (['/us/products/'].includes(fullPathname)) {
     response = NextResponse.next({
       request: {
