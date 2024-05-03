@@ -1,0 +1,29 @@
+name: Beta
+
+env:
+  VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+on:
+  push:
+    branches:
+      - beta
+
+jobs:
+
+  deploy-beta:
+
+    name: Deploy Beta
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun vercel pull --environment=preview --git-branch=beta
+      - run: bun vercel build
+      - run: bun vercel deploy --prebuilt
+
+
